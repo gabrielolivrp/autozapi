@@ -1,0 +1,15 @@
+{
+  "name": "Autozapi",
+  "applications": [
+    {
+      "applicationId": "rescuer",
+      "name": "Rescuer",
+      "postback": "http://localhost:3000/callback/whatsapp"
+    },
+    {
+      "applicationId": "producer",
+      "name": "Producer",
+      "postback": "http://localhost:3001/callback/whatsapp"
+    }
+  ]
+}
