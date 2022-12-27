@@ -9,7 +9,7 @@ export async function sendText(params: SendText): Promise<SendTextOutput> {
     chatId: params.chatId,
     instanceId: params.instanceId,
     data: {
-      base64: params.text,
+      text: params.text,
     },
   })
 

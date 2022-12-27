@@ -4,10 +4,8 @@ import WhatsApp from '../whatsapp'
 class Queue {
   private static instance: Queue
   private queue: RabbitMQ
-  private whatsApp: WhatsApp
 
   private constructor() {
-    this.whatsApp = WhatsApp.getInstance()
     this.queue = new RabbitMQ(
       process.env.RABBITMQ_HOST!,
       process.env.RABBITMQ_QUEUE_NAME!,
@@ -18,10 +16,12 @@ class Queue {
   private async onMessage(message: any) {
     if (!message) return
     try {
-      const value = this.decodeMessage(message.content.toString())
+      const value = JSON.parse(message.content.toString())
+      const whatsApp = WhatsApp.getInstance()
+
       switch (value.type) {
         case 'send:audio': {
-          await this.whatsApp.sendAudio(
+          await whatsApp.sendAudio(
             value.instanceId,
             value.chatId,
             value.data.base64
@@ -29,7 +29,7 @@ class Queue {
           break
         }
         case 'send:image': {
-          await this.whatsApp.sendFileMessage(
+          await whatsApp.sendFileMessage(
             value.instanceId,
             value.chatId,
             value.data.base64
@@ -37,7 +37,7 @@ class Queue {
           break
         }
         case 'send:text': {
-          await this.whatsApp.sendMessage(
+          await whatsApp.sendMessage(
             value.instanceId,
             value.chatId,
             value.data.text
@@ -45,22 +45,20 @@ class Queue {
           break
         }
       }
-    } catch (err) {}
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   public producer(data: any) {
     return this.queue.producer(this.encodeMessage(data))
   }
 
-  private encodeMessage(value: any): string {
+  public encodeMessage(value: any): string {
     if (typeof value === 'string') {
       return value
     }
     return JSON.stringify(value)
-  }
-
-  private decodeMessage(value: string): any {
-    return JSON.parse(value)
   }
 
   public static getInstance(): Queue {
