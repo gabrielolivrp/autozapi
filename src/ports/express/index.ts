@@ -8,14 +8,6 @@ function server(): Server {
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
 
-  app.use((req, _res, next) => {
-    const { applicationId, instanceId } = req.params
-    if (applicationId && instanceId) {
-      req.instanceName = `${applicationId}_${instanceId}`
-    }
-    return next()
-  })
-
   app.use(swaggerRoutes)
   app.use(whatsAppRoutes)
 
