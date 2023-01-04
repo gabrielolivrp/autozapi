@@ -4,12 +4,7 @@
     {
       "applicationId": "rescuer",
       "name": "Rescuer",
-      "postback": "http://localhost:3000/callback/whatsapp"
-    },
-    {
-      "applicationId": "producer",
-      "name": "Producer",
-      "postback": "http://localhost:3001/callback/whatsapp"
+      "callback": "http://localhost:3000/api/whatsapp/onMessage"
     }
   ]
 }

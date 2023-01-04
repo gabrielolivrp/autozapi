@@ -1,5 +1,6 @@
 import Autozap from '@/ports/autozap'
 import configs from '@/../autozapi.json'
+import axios from 'axios'
 
 class WhatsApp {
   private static instance: WhatsApp
@@ -9,7 +10,7 @@ class WhatsApp {
     this.autozap = new Autozap(this.onMessage)
   }
 
-  private onMessage(instanceId: string, data: any) {
+  private async onMessage(instanceId: string, data: any) {
     const [applicationId, sessionId] = instanceId.split('_')
 
     const application = configs.applications.find(
@@ -18,7 +19,10 @@ class WhatsApp {
 
     if (!application) return
 
-    console.log(application, data)
+    await axios.post(application.callback, {
+      sessionId,
+      message: data,
+    })
   }
 
   public getQrCode(instanceId: string, type_: 'base64' | 'urlCode') {

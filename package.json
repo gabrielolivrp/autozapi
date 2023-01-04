@@ -7,7 +7,7 @@
     "build": "npm run docs:gen && tsc",
     "start": "node dist/src/app.js",
     "dev": "nodemon --exec sucrase-node src/app.ts",
-    "docs:gen": "ts-node scripts/docs.ts"
+    "gen:docs": "ts-node scripts/docs.ts"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -16,7 +16,8 @@
     "winston": "^3.8.2",
     "swagger-ui-express": "^4.6.0",
     "amqplib": "^0.10.3",
-    "module-alias": "^2.2.2"
+    "module-alias": "^2.2.2",
+    "axios": "^1.2.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.15",
