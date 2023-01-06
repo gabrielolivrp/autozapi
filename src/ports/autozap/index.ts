@@ -14,7 +14,6 @@ import {
 } from 'autozap'
 
 class Autozap {
-  // private static instance: WhatsApp = null
   private onMessage: (instanceId: InstanceId, data: any) => void
   private whatsAppInstances: Record<InstanceId, WhatsApp | null> = {}
 

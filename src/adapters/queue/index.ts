@@ -19,29 +19,22 @@ class Queue {
       const value = JSON.parse(message.content.toString())
       const whatsApp = WhatsApp.getInstance()
 
+      const instanceId = `${value.applicationId}_${value.sessionId}`
       switch (value.type) {
         case 'send:audio': {
-          await whatsApp.sendAudio(
-            value.instanceId,
-            value.chatId,
-            value.data.base64
-          )
+          await whatsApp.sendAudio(instanceId, value.chatId, value.data.base64)
           break
         }
         case 'send:image': {
           await whatsApp.sendFileMessage(
-            value.instanceId,
+            instanceId,
             value.chatId,
             value.data.base64
           )
           break
         }
         case 'send:text': {
-          await whatsApp.sendMessage(
-            value.instanceId,
-            value.chatId,
-            value.data.text
-          )
+          await whatsApp.sendMessage(instanceId, value.chatId, value.data.text)
           break
         }
       }
