@@ -373,10 +373,10 @@
   resolved "https://registry.yarnpkg.com/@wppconnect/wa-js/-/wa-js-2.17.0.tgz#ff167d8d81203dd917ad44a190187088e00a2da0"
   integrity sha512-tteq0kkV2gaW6sisoxL7yDL4T+Tr0x01g1n5AoXCsPS/XUG9FRd0xoNsK5SUX2R1QULBD60NrxodFwDxNfiw5g==
 
-"@wppconnect/wa-js@^2.18.0":
-  version "2.18.0"
-  resolved "https://registry.yarnpkg.com/@wppconnect/wa-js/-/wa-js-2.18.0.tgz#6cebc2c2e362bad02417f3f9f4dfbfc65c7ba0f4"
-  integrity sha512-ssb+8sBd3xeZQVtlRyDrlVBGoFPLRkqfuYu0a/Mgy8pE4Z4AhEPmMZqVukZzxZdYrRWDZnfcyVg098c0m8Ot4A==
+"@wppconnect/wa-js@^2.18.3":
+  version "2.18.3"
+  resolved "https://registry.yarnpkg.com/@wppconnect/wa-js/-/wa-js-2.18.3.tgz#42241642655afb6a62fcbf25b6929d75cb339454"
+  integrity sha512-WWtx1noiLR9b1klSJt9u4NWIrMFG8y5QLGTrdTzMGomoFReQ1UGbTxtifnlmcbzQraCzK5pMKULJ0iDJqAloIQ==
 
 abbrev@1:
   version "1.1.1"
@@ -534,12 +534,12 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autozap@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/autozap/-/autozap-1.1.2.tgz#1fd6ea2cdffd790ffb2192a9c60e55a71c8b9a8e"
-  integrity sha512-eP39EhFhzAixwy0MCxC5vhyemLoALyZXiDgnriiICR+UDFMUrviOuucME74F57Kew24d3j8jf43d3m9lfe+z4Q==
+autozap@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/autozap/-/autozap-1.1.3.tgz#88fab5738c554470a41ca536e50befe429510002"
+  integrity sha512-ZJJ77uTFRALHpXsAitQYkVQpYJEMYice86VHkt5hskRAcASnimkucbLrfl/pYADCp6smHQZIDr18hOBS7mlTNA==
   dependencies:
-    "@wppconnect/wa-js" "^2.18.0"
+    "@wppconnect/wa-js" "^2.18.3"
     playwright "^1.28.1"
     qrcode-terminal "0.12.0"
     venom-bot "^4.3.7"
