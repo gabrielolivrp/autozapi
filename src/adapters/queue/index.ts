@@ -1,22 +1,35 @@
-import RabbitMQ from '@/ports/rabbitMQ'
+// import RabbitMQ from '@/ports/rabbitMQ'
+import Redis from '@/ports/redis'
+import { DoneCallback, Job } from 'bull'
 import WhatsApp from '../whatsapp'
 
 class Queue {
   private static instance: Queue
-  private queue: RabbitMQ
+  private queue: Redis<any>
 
   private constructor() {
-    this.queue = new RabbitMQ(
-      process.env.RABBITMQ_HOST!,
-      process.env.RABBITMQ_QUEUE_NAME!,
+    this.queue = new Redis(
+      process.env.REDIS_HOST!,
+      process.env.REDIS_QUEUE_NAME!,
       this.onMessage
     )
   }
 
-  private async onMessage(message: any) {
-    if (!message) return
+  public static getInstance(): Queue {
+    if (!Queue.instance) {
+      Queue.instance = new Queue()
+    }
+
+    return Queue.instance
+  }
+
+  public producer(data: any) {
+    return this.queue.producer(data, {})
+  }
+
+  private async onMessage(job: Job<any>, done: DoneCallback) {
     try {
-      const value = JSON.parse(message.content.toString())
+      const { data: value } = job
       const whatsApp = WhatsApp.getInstance()
 
       const instanceId = `${value.applicationId}_${value.sessionId}`
@@ -41,25 +54,7 @@ class Queue {
     } catch (err) {
       console.error(err)
     }
-  }
-
-  public producer(data: any) {
-    return this.queue.producer(this.encodeMessage(data))
-  }
-
-  public encodeMessage(value: any): string {
-    if (typeof value === 'string') {
-      return value
-    }
-    return JSON.stringify(value)
-  }
-
-  public static getInstance(): Queue {
-    if (!Queue.instance) {
-      Queue.instance = new Queue()
-    }
-
-    return Queue.instance
+    done()
   }
 }
 
