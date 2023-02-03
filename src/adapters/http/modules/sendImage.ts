@@ -1,17 +1,20 @@
 import Queue from '@/adapters/queue'
 import { SendImage, SendImageOutput } from '@/core/whatsapp/types'
+import { wrapper } from './wrapper'
 
-export async function sendImage(params: SendImage): Promise<SendImageOutput> {
-  const queue = Queue.getInstance()
+export const sendImage = wrapper<SendImage, SendImageOutput>(
+  async ({ chatId, instanceId, base64 }) => {
+    const queue = Queue.getInstance()
 
-  queue.producer({
-    type: 'send:image',
-    chatId: params.chatId,
-    instanceId: params.instanceId,
-    data: {
-      base64: params.base64,
-    },
-  })
+    queue.producer({
+      type: 'send:image',
+      chatId,
+      instanceId,
+      data: {
+        base64,
+      },
+    })
 
-  return { ok: true }
-}
+    return { ok: true }
+  }
+)

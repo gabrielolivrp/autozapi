@@ -1,12 +1,13 @@
 import WhatsApp from '@/adapters/whatsapp'
 import { GetStatus, GetStatusOutput } from '@/core/whatsapp/types'
+import { wrapper } from './wrapper'
 
-export async function status({
-  instanceId,
-}: GetStatus): Promise<GetStatusOutput> {
-  const whatsApp = WhatsApp.getInstance()
+export const status = wrapper<GetStatus, GetStatusOutput>(
+  async ({ instanceId }) => {
+    const whatsApp = WhatsApp.getInstance()
 
-  const status = await whatsApp.getWhatsAppStatus(instanceId)
+    const status = await whatsApp.getWhatsAppStatus(instanceId)
 
-  return { status }
-}
+    return { status }
+  }
+)

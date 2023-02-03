@@ -1,17 +1,20 @@
 import Queue from '@/adapters/queue'
 import { SendAudio, SendAudioOutput } from '@/core/whatsapp/types'
+import { wrapper } from './wrapper'
 
-export async function sendAudio(params: SendAudio): Promise<SendAudioOutput> {
-  const queue = Queue.getInstance()
+export const sendAudio = wrapper<SendAudio, SendAudioOutput>(
+  async ({ chatId, instanceId, base64 }) => {
+    const queue = Queue.getInstance()
 
-  queue.producer({
-    type: 'send:audio',
-    chatId: params.chatId,
-    instanceId: params.instanceId,
-    data: {
-      base64: params.base64,
-    },
-  })
+    queue.producer({
+      type: 'send:audio',
+      chatId,
+      instanceId,
+      data: {
+        base64,
+      },
+    })
 
-  return { ok: true }
-}
+    return { ok: true }
+  }
+)
