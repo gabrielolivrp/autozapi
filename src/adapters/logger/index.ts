@@ -20,9 +20,9 @@ class Logger {
     return Logger.instance
   }
 
-  // public static log(level: Level, message: string) {
-  //   return Logger.getInstance().log(level, message)
-  // }
+  public static log(level: Level, message: string) {
+    return Logger.getInstance().log(level, message)
+  }
 }
 
 export default Logger

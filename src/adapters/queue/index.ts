@@ -1,6 +1,6 @@
-// import RabbitMQ from '@/ports/rabbitMQ'
-import Redis from '@/ports/redis'
 import { DoneCallback, Job } from 'bull'
+import Redis from '@/ports/redis'
+import Logger from '../logger'
 import WhatsApp from '../whatsapp'
 
 class Queue {
@@ -28,8 +28,8 @@ class Queue {
   }
 
   private async onMessage(job: Job<any>, done: DoneCallback) {
+    const { data: value } = job
     try {
-      const { data: value } = job
       const whatsApp = WhatsApp.getInstance()
 
       const instanceId = `${value.applicationId}_${value.sessionId}`
@@ -51,8 +51,11 @@ class Queue {
           break
         }
       }
-    } catch (err) {
-      console.error(err)
+    } catch (err: any) {
+      Logger.log(
+        'fatal',
+        `error: \`${err.message}\`\ndata: \`${JSON.stringify(value)}\``
+      )
     }
     done()
   }

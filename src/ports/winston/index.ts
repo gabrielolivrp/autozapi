@@ -32,14 +32,12 @@ class Winston {
       fs.mkdirSync('logs')
     }
 
-    this.logger = new winston.Logger({
+    this.logger = winston.createLogger({
       levels,
       transports: [
-        new winston.transports.Console({
-          level: 'fatal',
-        }),
         new winston.transports.File({
-          filename: './logs/myfile.log', // TODO:
+          level: 'fatal',
+          filename: `./logs/${new Date().toISOString().slice(0, 10)}.log`,
         }),
       ],
     })
@@ -54,8 +52,5 @@ class Winston {
     }
   }
 }
-
-// export const log = (level: Level, message: string) =>
-//   Winston.getInstance().log(level, message)
 
 export default Winston
