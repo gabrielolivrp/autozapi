@@ -4,7 +4,7 @@
   "main": "dist/src/app.js",
   "license": "MIT",
   "scripts": {
-    "build": "npm run docs:gen && tsc",
+    "build": "tsc",
     "start": "node dist/src/app.js",
     "dev": "nodemon --exec sucrase-node src/app.ts",
     "gen:docs": "ts-node scripts/docs.ts"

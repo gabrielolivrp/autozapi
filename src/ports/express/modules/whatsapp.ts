@@ -1,13 +1,6 @@
 import { Router, Request, Response } from 'express'
 import { whatsappInstanceMiddleware } from '@/ports/express/middlewares'
-import {
-  qrcode,
-  sendImage,
-  sendText,
-  sendAudio,
-  status,
-  logout,
-} from '@/adapters/http/modules'
+import { qrcode, status, logout } from '@/adapters/http/modules'
 
 const whatsAppRoutes = Router()
 
