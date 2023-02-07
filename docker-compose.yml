@@ -3,7 +3,7 @@ version: '3.8'
 services:
   web:
     build:
-      context: ./
+      context: .
     volumes:
       - .:/opt/application/autozapi
     ports:

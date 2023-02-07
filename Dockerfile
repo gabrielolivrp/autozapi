@@ -2,12 +2,16 @@ FROM node:alpine
 
 FROM mcr.microsoft.com/playwright:v1.28.1-focal
 
-WORKDIR /opt/application/autozapi
+WORKDIR /usr/autozapi
 
 COPY package*.json ./
 
-CMD npm install
+RUN npm install
 
-CMD npm run build && npm run start
+COPY . .
+
+RUN npm run build
 
 EXPOSE 3000
+
+CMD [ "npm", "run", "start" ]
