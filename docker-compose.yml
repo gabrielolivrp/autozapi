@@ -5,7 +5,7 @@ services:
     build:
       context: .
     volumes:
-      - .:/opt/application/autozapi
+      - ./.docker/.autozap:/usr/autozapi/.autozap
     ports:
       - '3333:3000'
     extra_hosts:
