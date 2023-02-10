@@ -8,10 +8,13 @@ COPY package*.json ./
 
 RUN npm install
 
+RUN npx playwright install chromium \
+    && npx playwright install-deps chromium
+
 COPY . .
 
 RUN npm run build
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "start" ]
+ENTRYPOINT [ "npm", "run", "start" ]
