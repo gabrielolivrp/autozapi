@@ -565,10 +565,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autozap@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/autozap/-/autozap-1.1.8.tgz#03f6a86ef9902904c2c6f3e1c9bda93c61d7a838"
-  integrity sha512-GmQHQ+rtxlp+YeUhxQgBrjWeON2U3Dxja6OFdILUi0WLYeRyOa5nhxPTmUC8t+fCvnMkTX+biFC5nNEOX2Y0NQ==
+autozap@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/autozap/-/autozap-1.1.9.tgz#55df2ac8c4e414fd125dc10e76065769cc559bdd"
+  integrity sha512-hcZV2gSmuVMwbJ5yVYYn7ligBc/WUQoINCxE35o+QkNFqm2ABLiWT21c2BFwXzQCjeQ7GIlwDmGHHxzio4bmnQ==
   dependencies:
     "@wppconnect/wa-js" "^2.19.1"
     playwright "^1.28.1"
