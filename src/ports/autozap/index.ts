@@ -9,8 +9,10 @@ import {
   logout,
   sendFileMessage,
   sendAudio,
+  checkInjections,
   sendMessage,
   onMessage,
+  injectApi,
 } from 'autozap'
 
 class Autozap {
@@ -32,6 +34,12 @@ class Autozap {
         (data) => this.onMessage(instanceId, data),
         { type: 'chat', massages: 'received' }
       )
+    }
+
+    const instance = this.whatsAppInstances[instanceId]!
+    const injected = await checkInjections(instance.page)
+    if (!injected) {
+      await injectApi(instance.page)
     }
 
     return this.whatsAppInstances[instanceId]!
