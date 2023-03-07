@@ -11,14 +11,14 @@
   },
   "dependencies": {
     "express": "^4.18.2",
-    "autozap": "^1.1.10",
+    "autozap": "^1.1.11",
     "dotenv": "^16.0.3",
     "winston": "^3.8.2",
-    "swagger-ui-express": "^4.6.0",
+    "swagger-ui-express": "^4.6.2",
     "bull": "^4.10.4",
     "amqplib": "^0.10.3",
     "module-alias": "^2.2.2",
-    "axios": "^1.3.2",
+    "axios": "^1.3.4",
     "typescript": "^4.9.5"
   },
   "devDependencies": {
